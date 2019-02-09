@@ -20,11 +20,15 @@ For addressing the task at hand,we have trained the dataset on three different m
 -CNN head outputs 16 feature maps of size 8x8
 -The question vector and flatten image vector are concatenated and fed into a series of dense layers
 
-[unnamed](https://user-images.githubusercontent.com/28951885/52520378-4751cf00-2c8f-11e9-9f21-ae4e3b5c3181.png)
+
 
 
 
 CNN –LSTM Model with Stacked Attention
+
+
+![unnamed](https://user-images.githubusercontent.com/28951885/52520378-4751cf00-2c8f-11e9-9f21-ae4e3b5c3181.png)
+
 This model is a Keras implementation of the model proposed in the paper : 
 Stacked Attention Networks for Image Question Answering.
 Link to the paper :
