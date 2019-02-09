@@ -37,7 +37,7 @@ img_rows, img_cols = 96, 96
 image_input_shape = (img_rows, img_cols, 3)
 
 
-# In[8]:
+
 
 print("Running")
 samples = 80000
@@ -45,30 +45,30 @@ vocab_size = 115 # Found out that there are 115 (less than that) unique words in
 sequence_length = 42 #I know the maximum length of the question is 42 words. Found out
 
 
-# In[9]:
+
 
 
 (x_train, y_train), num_labels, tokenizer = load_data(samples, vocab_size, sequence_length)
 word_index = tokenizer.word_index
 
 
-# In[10]:
+
 
 
 K.image_data_format()
 
 
-# In[11]:
+
 
 
 # model_im = Sequential()
 # model_im.add(Lambda)
 
 
-# In[12]:
 
 
-# Image model.. Change as you wish.
+
+# Image model.. 
 image_inputs = Input(shape =image_input_shape)
 image_x = Lambda(process_image)(image_inputs)
 
@@ -155,13 +155,13 @@ print(hi.shape)
 # print(model_im.summary())
 
 
-# In[13]:
+
 
 
 # plot_model(model_im,to_file='skip.png')
 
 
-# In[14]:
+
 
 
 # Language Model
@@ -177,7 +177,7 @@ f.close()
 print('Found %s word vectors.' % len(embeddings_index))
 
 
-# In[15]:
+
 
 
 EMBEDDING_DIM = 50
@@ -189,7 +189,7 @@ for word, i in word_index.items():
         embedding_matrix[i] = embedding_vector
 
 
-# In[16]:
+
 
 
 embedding_layer = Embedding(len(word_index) + 1,
@@ -199,7 +199,7 @@ embedding_layer = Embedding(len(word_index) + 1,
                             trainable=True)
 
 
-# In[17]:
+
 
 
 text_inputs = Input(shape=(sequence_length,))
@@ -212,19 +212,19 @@ print(text_x.shape)
 # print(model2.summary())
 
 
-# In[18]:
+
 
 
 import keras.backend as K 
 
 
-# In[ ]:
 
 
 
 
 
-# In[19]:
+
+
 
 
 # def attention(hi,text_x):
@@ -734,14 +734,13 @@ output  = Dense(num_labels, activation='softmax', name='output')(u)
 model = Model(inputs=[ text_inputs,image_inputs], outputs=[output])
 
 
-# In[21]:
+
 
 
 print(model.summary())
 plot_model(model,to_file='attn24.png')
 
 
-# In[22]:
 
 
 model.compile(loss = 'categorical_crossentropy', optimizer=Adadelta(),metrics = ['accuracy'])
